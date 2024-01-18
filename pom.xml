@@ -10,8 +10,8 @@
 	</parent>
 	<groupId>com.example</groupId>
 	<artifactId>sb_init_project</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
-	<name>sb_init_project</name>
+	<version>1.0</version>
+	<name>sb_jar</name>
 	<description>Spring boot Init project to Demo CI on GitHub Workflows</description>
 	<properties>
 		<java.version>21</java.version>
