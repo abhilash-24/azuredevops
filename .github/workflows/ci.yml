@@ -1,22 +1,31 @@
 name: ci
-on:
-  push:
-    branches:
-      - 'main'
-  pr_merge:
-    branches:
-        to:
-      - 'main'
+on: 
+  workflow_dispatch:
+    inputs: 
+      tag:
+        description: 'Image Tag'
+        required: true
+        type: string
 
+
+# on:
+#   push:
+#     branches:
+#       - 'main'
+#   pull_request:
+#     types:
+#       - closed
+#     branches:
+#       - 'main'
 jobs:
-  Image Build:
+  ImageBuild:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
         uses: actions/checkout@v3
 
-      - name: Set up QEMU
-        uses: docker/setup-qemu-action@v3
+      # - name: Set up QEMU
+      #   uses: docker/setup-qemu-action@v3
 
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v3
@@ -32,4 +41,5 @@ jobs:
         with:
           context: .
           push: true
-          tags: user/app:latest
+          # tags: fantomrider/demo:latest
+          tags: fantomrider/demo:${{ inputs.tag }}
